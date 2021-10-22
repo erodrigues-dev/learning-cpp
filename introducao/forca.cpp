@@ -131,26 +131,33 @@ void fim_do_jogo()
 
 void sortear_palavra_secreta()
 {
+  cout << "lendo palavras no arquivo..." << endl;
+
   ifstream arquivo;
   arquivo.open("palavras.txt");
-  int quantidade_palavras;
-  arquivo >> quantidade_palavras;
-
-  cout << "O arquivo possui " << quantidade_palavras << " palavras" << endl;
-
+  
   vector<string> palavras;
 
-  for (int i = 0; i < quantidade_palavras; i++)
+  while(true)
   {
+    if(arquivo.eof())
+      break;
+
     string palavra;
     arquivo >> palavra;
     palavras.push_back(palavra);
   }
 
+  
   arquivo.close();
+
+  cout << palavras.size() << " palavras encontradas" << endl;
+  cout << "sorteando palavras..." << endl;
 
   srand(time(0));
   int indice = rand() % palavras.size();
+
+  cout << "palavra sorteada! vamos começar!" << endl << endl;
 
   PALAVRA_SECRETA = palavras[indice];
 }
