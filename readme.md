@@ -12,3 +12,13 @@
 - Familiarize-se com os vetores de alocação dinâmica, os vectors
 - Utilize o tipo map, uma das estruturas de dados mais poderosas de C++
 - Leia e modifique arquivos de texto usando seu programa
+
+## [Avançando com C++: Entenda melhor a linguagem](https://cursos.alura.com.br/course/c-plus-plus-avancando-linguagem)
+
+/**avancando**
+
+- Deixe seus projetos mais organizados
+- Entenda como funciona o processo de compilação
+- Utilize ferramentas poderosas para programar
+- Se aprofunde em detalhes da linguagem
+- Entenda sobre gerenciamento de memória
