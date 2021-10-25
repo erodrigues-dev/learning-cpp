@@ -9,7 +9,6 @@
 using namespace std;
 
 
-
 int main()
 {
     
@@ -24,16 +23,16 @@ int main()
     cout << "******************************" << endl;
     cout << "\n";
 
-    palavra_secreta = sortear_palavra_secreta();
+    palavra_secreta = Forca::sortear_palavra_secreta();
 
     while (!acertou && !enforcou)
     {
-        imprimir(palavra_secreta, chutou);
-        imprimir_chutes_errados(chutes_errados);
-        chuta(palavra_secreta, chutou, chutes_errados);
-        acertou = acertou_palavra(palavra_secreta, chutou);
-        enforcou = enforcado(palavra_secreta, chutes_errados);
+        Forca::imprimir(palavra_secreta, chutou);
+        Forca::imprimir_chutes_errados(chutes_errados);
+        Forca::chuta(palavra_secreta, chutou, chutes_errados);
+        acertou = Forca::acertou_palavra(palavra_secreta, chutou);
+        enforcou = Forca::enforcado(palavra_secreta, chutes_errados);
     }
 
-    fim_do_jogo(palavra_secreta, chutou, acertou, enforcou);
+    Forca::fim_do_jogo(palavra_secreta, chutou, acertou, enforcou);
 }

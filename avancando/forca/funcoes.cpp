@@ -6,6 +6,8 @@
 
 using namespace std;
 
+namespace Forca {
+
 void imprimir(string palavra_secreta, map<char, bool>& chutou, bool finalizado = false)
 {
   cout << "\n";
@@ -124,4 +126,6 @@ string sortear_palavra_secreta()
   cout << "palavra sorteada! vamos começar!" << endl << endl;
 
   return palavras[indice];
+}
+
 }
