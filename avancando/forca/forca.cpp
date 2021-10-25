@@ -8,27 +8,32 @@
 
 using namespace std;
 
-string PALAVRA_SECRETA;
-map<char, bool> chutou;
-vector<char> chutes_errados;
-bool enforcou = false;
-bool acertou = false;
+
 
 int main()
 {
-  cout << "******************************" << endl;
-  cout << "* Bem vindo ao jogo da forca *" << endl;
-  cout << "******************************" << endl;
-  cout << "\n";
+    
+    string palavra_secreta;
+    map<char, bool> chutou;
+    vector<char> chutes_errados;
+    bool enforcou = false;
+    bool acertou = false;
+    
+    cout << "******************************" << endl;
+    cout << "* Bem vindo ao jogo da forca *" << endl;
+    cout << "******************************" << endl;
+    cout << "\n";
 
-  sortear_palavra_secreta();
+    palavra_secreta = sortear_palavra_secreta();
 
-  while (!acertou && !enforcou)
-  {
-    imprimir(false);
-    imprimir_chutes_errados();
-    chuta();
-  }
+    while (!acertou && !enforcou)
+    {
+        imprimir(palavra_secreta, chutou);
+        imprimir_chutes_errados(chutes_errados);
+        chuta(palavra_secreta, chutou, chutes_errados);
+        acertou = acertou_palavra(palavra_secreta, chutou);
+        enforcou = enforcado(palavra_secreta, chutes_errados);
+    }
 
-  fim_do_jogo();
+    fim_do_jogo(palavra_secreta, chutou, acertou, enforcou);
 }

@@ -6,16 +6,10 @@
 
 using namespace std;
 
-extern string PALAVRA_SECRETA;
-extern map<char, bool> chutou;
-extern vector<char> chutes_errados;
-extern bool enforcou;
-extern bool acertou;
-
-void imprimir(bool finalizado = false)
+void imprimir(string palavra_secreta, map<char, bool>& chutou, bool finalizado = false)
 {
   cout << "\n";
-  for (char letra : PALAVRA_SECRETA)
+  for (char letra : palavra_secreta)
   {
     if (finalizado || chutou[letra])
       cout << letra << " ";
@@ -25,7 +19,7 @@ void imprimir(bool finalizado = false)
   cout << endl;
 }
 
-void imprimir_chutes_errados()
+void imprimir_chutes_errados(vector<char>& chutes_errados)
 {
   if (chutes_errados.size() > 0)
   {
@@ -36,9 +30,9 @@ void imprimir_chutes_errados()
   }
 }
 
-bool letra_existe(char chute)
+bool letra_existe(string palavra_secreta, char chute)
 {
-  for (char letra : PALAVRA_SECRETA)
+  for (char letra : palavra_secreta)
   {
     if (chute == letra)
       return true;
@@ -47,10 +41,10 @@ bool letra_existe(char chute)
   return false;
 }
 
-bool acertou_palavra()
+bool acertou_palavra(string palavra_secreta, map<char, bool>& chutou)
 {
   bool acertou = true;
-  for (char l : PALAVRA_SECRETA)
+  for (char l : palavra_secreta)
   {
     if (!chutou[l])
     {
@@ -61,18 +55,18 @@ bool acertou_palavra()
   return acertou;
 }
 
-bool enforcado()
+bool enforcado(string palavra_secreta, vector<char>& chutes_errados)
 {
-  return chutes_errados.size() > PALAVRA_SECRETA.size();
+  return chutes_errados.size() > palavra_secreta.size();
 }
 
-void chuta()
+void chuta(string palavra_secreta, map<char, bool>& chutou, vector<char>& chutes_errados)
 {
   char chute;
   cout << "Qual é o seu chute? ";
   cin >> chute;
 
-  if (letra_existe(chute))
+  if (letra_existe(palavra_secreta, chute))
   {
     // cout << "Vc acertou!" << endl;
     chutou[chute] = true;
@@ -80,16 +74,14 @@ void chuta()
   else
   {
     chutes_errados.push_back(chute);
-    cout << "Vc errou!" << endl;
+//    cout << "Vc errou!" << endl;
   }
 
-  acertou = acertou_palavra();
-  enforcou = enforcado();
 }
 
-void fim_do_jogo()
+void fim_do_jogo(string palavra_secreta, map<char, bool>& chutou, bool acertou, bool enforcou)
 {
-  imprimir(true);
+  imprimir(palavra_secreta, chutou, true);
 
   cout << endl;
   cout << "Jogo finalizado" << endl;
@@ -101,7 +93,7 @@ void fim_do_jogo()
   }
 }
 
-void sortear_palavra_secreta()
+string sortear_palavra_secreta()
 {
   cout << "lendo palavras no arquivo..." << endl;
 
@@ -131,5 +123,5 @@ void sortear_palavra_secreta()
 
   cout << "palavra sorteada! vamos começar!" << endl << endl;
 
-  PALAVRA_SECRETA = palavras[indice];
+  return palavras[indice];
 }
