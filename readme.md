@@ -22,3 +22,5 @@
 - Utilize ferramentas poderosas para programar
 - Se aprofunde em detalhes da linguagem
 - Entenda sobre gerenciamento de memória
+
+Nesse curso instalamos o codelite como IDE de desenvolvimento
