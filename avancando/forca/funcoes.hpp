@@ -2,10 +2,10 @@
 #include <map>
 #include <vector>
 
-using namespace std;
-
 namespace Forca {
 
+    using namespace std;
+    
     void imprimir(string palavra_secreta, map<char, bool>& chutou, bool finalizado = false);
     void imprimir_chutes_errados(vector<char>& chutes_errados);
     bool letra_existe(string palavra_secreta, char chute);
