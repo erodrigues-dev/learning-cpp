@@ -14,7 +14,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Elton Rodrigues
-Date                   :=22/10/21
+Date                   :=25/10/21
 CodeLitePath           :=/home/erodrigues/.codelite
 LinkerName             :=/usr/bin/g++-10
 SharedObjectLinkerName :=/usr/bin/g++-10 -shared -fPIC
@@ -60,7 +60,7 @@ AS       := /usr/bin/as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=../build-$(ConfigurationName)/forca/funcoes.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/forca/forca.cpp$(ObjectSuffix) 
+Objects0=../build-$(ConfigurationName)/forca/forca.cpp$(ObjectSuffix) ../build-$(ConfigurationName)/forca/funcoes.cpp$(ObjectSuffix) 
 
 
 
@@ -91,14 +91,6 @@ PreBuild:
 ##
 ## Objects
 ##
-../build-$(ConfigurationName)/forca/funcoes.cpp$(ObjectSuffix): funcoes.cpp ../build-$(ConfigurationName)/forca/funcoes.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/erodrigues/www/learning/alura/c++/avancando/forca/funcoes.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/funcoes.cpp$(ObjectSuffix) $(IncludePath)
-../build-$(ConfigurationName)/forca/funcoes.cpp$(DependSuffix): funcoes.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/forca/funcoes.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/forca/funcoes.cpp$(DependSuffix) -MM funcoes.cpp
-
-../build-$(ConfigurationName)/forca/funcoes.cpp$(PreprocessSuffix): funcoes.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/forca/funcoes.cpp$(PreprocessSuffix) funcoes.cpp
-
 ../build-$(ConfigurationName)/forca/forca.cpp$(ObjectSuffix): forca.cpp ../build-$(ConfigurationName)/forca/forca.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/erodrigues/www/learning/alura/c++/avancando/forca/forca.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/forca.cpp$(ObjectSuffix) $(IncludePath)
 ../build-$(ConfigurationName)/forca/forca.cpp$(DependSuffix): forca.cpp
@@ -106,6 +98,14 @@ PreBuild:
 
 ../build-$(ConfigurationName)/forca/forca.cpp$(PreprocessSuffix): forca.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/forca/forca.cpp$(PreprocessSuffix) forca.cpp
+
+../build-$(ConfigurationName)/forca/funcoes.cpp$(ObjectSuffix): funcoes.cpp ../build-$(ConfigurationName)/forca/funcoes.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/erodrigues/www/learning/alura/c++/avancando/forca/funcoes.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/funcoes.cpp$(ObjectSuffix) $(IncludePath)
+../build-$(ConfigurationName)/forca/funcoes.cpp$(DependSuffix): funcoes.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT../build-$(ConfigurationName)/forca/funcoes.cpp$(ObjectSuffix) -MF../build-$(ConfigurationName)/forca/funcoes.cpp$(DependSuffix) -MM funcoes.cpp
+
+../build-$(ConfigurationName)/forca/funcoes.cpp$(PreprocessSuffix): funcoes.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) ../build-$(ConfigurationName)/forca/funcoes.cpp$(PreprocessSuffix) funcoes.cpp
 
 
 -include ../build-$(ConfigurationName)/forca//*$(DependSuffix)
